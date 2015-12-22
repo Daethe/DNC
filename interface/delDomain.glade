@@ -55,7 +55,7 @@
                 <property name="margin_bottom">10</property>
                 <property name="has_entry">True</property>
                 <child internal-child="entry">
-                  <object class="GtkEntry" id="combobox-entry">
+                  <object class="GtkEntry" id="delDomain_informationDomain_domainNameEntry">
                     <property name="can_focus">False</property>
                     <property name="editable">False</property>
                   </object>

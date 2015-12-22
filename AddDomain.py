@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import subprocess
-import time
 import os
 from gi.repository import Gtk
 

@@ -1,16 +1,16 @@
 # Domain Name Creator
 
-Cet outil a été fait pour les personnes n'ayant plus l'envie d'éditer les fichiers Apache pour créer un nouveau nom de domaine dans le cadre de leur développement. Celle-ci est uniquement disponible pour Linux. Assurez-vous d'exécuter les commandes suivantes:
+This tool was made for people who no longer want to edit the Apache files to create a new domain name as part of their development. This is only available for Linux. Make sure to execute the following commands:
 ```bash
 sudo add-apt-repository ppa:fkrull/deadsnakes
 sudo apt-get update
 sudo apt-get install python2.7
 ```
 
-#### Application multilangage
+#### Multilingual application
 
-Pour le moment cette application supporte 2 langages.
-- Anglais
-- Français
+For now this application supports two languages.
+- English
+- French
 
-A l'ajout d'un nouveau fichier de langage, veuillez-vous assurer d'écrire le nom du fichier de langue ainsi créer au sein du fichier (__data/lang.dnc__) pour garantir l'accés a celui-ci au sein de l'application.
+With the addition of a new language file, please make sure to write the name of the language file to create within the file (__data/lang.dnc__) to ensure access to it within application.

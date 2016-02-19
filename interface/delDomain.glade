@@ -53,13 +53,6 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">10</property>
                 <property name="margin_bottom">10</property>
-                <property name="has_entry">True</property>
-                <child internal-child="entry">
-                  <object class="GtkEntry" id="delDomain_informationDomain_domainNameEntry">
-                    <property name="can_focus">False</property>
-                    <property name="editable">False</property>
-                  </object>
-                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -97,6 +90,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
+        <property name="homogeneous">True</property>
         <child>
           <object class="GtkLabel" id="delDomain_progressDomain_title">
             <property name="visible">True</property>
@@ -126,12 +120,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="delDomain_progressDomain_log">
+          <object class="GtkLabel" id="delDomain_progressDomain_log">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">label</property>
           </object>
           <packing>
-            <property name="expand">True</property>
+            <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">2</property>
           </packing>

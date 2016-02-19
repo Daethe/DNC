@@ -1,0 +1,27 @@
+{
+    "langMain": {
+        "desc1":      "Pour créer un nouveau nom de domaine, veuillez suivre les informations données lors de la création de celui-ci. Durant le processus de création un dossier sera créé pour ce nom de domaine.",
+        "desc2":      "Lors de l'étape de suppression le dossier qui fut créé sera supprimé, de ce fait veuillez prendre soin de sauvegarder tout fichier créé au sein de celui-ci.",
+        "newDomain":  "Ajouter un nom de domaine",
+        "delDomain":  "Supprimer un nom de domaine",
+        "prefDomain": "Preférences"
+    },
+    "langAdd": {
+        "title":      "Ajouter un nouveau domaine",
+        "introDesc1": "Pendant le processus veillez à garder votre serveur LAMP allumé. Celui-ci sera automatique redémarré à un certain moment de l'opération pour garantir le début de votre développement plus rapide.",
+        "introDesc2": "Durant la configuration veuillez ne pas toucher au dossier qui sera créé pour garantir le fonctionnement du programme. De même veuiller ne pas toucher au fichier conf qui sera créé.",
+        "domainName": "Nom de domaine",
+        "informDesc": "Pour ajouter un nouveau domaine, veuillez spécifier le champ ci-dessus et vous assurez que ce nom de domaine n'existe pas encore sur votre serveur LAMP.",
+        "complDesc1": "Le nom de domaine a bien été ajouté à votre serveur LAMP. Celui-ci fait aussi parti du fichier hosts de votre système. L'ajout est de ce fait effectif.",
+        "complDesc2": "Votre serveur de développement a également été redémarrée pour garantir un développement plus rapide."
+    },
+    "langDel": {
+        "title":      "Supprimer un domaine"
+    },
+    "langPref": {
+        "hostLbl":    "Hôte Mysql",
+        "portLbl":    "Port Mysql",
+        "passLnl":    "Mot de passe Mysql",
+        "mysqlDesc" : "Les informations présentent ici servent à créer une base de données lors de la création d'un hôte virtuel."
+    }
+}

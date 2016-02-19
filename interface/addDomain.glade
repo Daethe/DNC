@@ -206,6 +206,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
+        <property name="homogeneous">True</property>
         <child>
           <object class="GtkLabel" id="addDomain_completeDomain_title">
             <property name="visible">True</property>
@@ -223,12 +224,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="addDomain_completeDomain_desc">
+          <object class="GtkLabel" id="addDomain_completeDomain_desc1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Le nom de domaine a bien été ajouté à votre server LAMP. Celui-ci fait aussi parti du fichier hosts de votre système. L'ajout est de ce fait effectif.
-
-Votre serveur de développement a également été redemarré pour garantir un développement plus rapide.</property>
+            <property name="label" translatable="yes">Le nom de domaine a bien été ajouté à votre server LAMP. Celui-ci fait aussi parti du fichier hosts de votre système. L'ajout est de ce fait effectif.</property>
             <property name="wrap">True</property>
             <property name="width_chars">50</property>
             <property name="max_width_chars">50</property>
@@ -238,6 +237,18 @@ Votre serveur de développement a également été redemarré pour garantir un d
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="addDomain_completeDomain_desc2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Votre serveur de développement a également été redemarré pour garantir un développement plus rapide.</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

@@ -1,12 +1,14 @@
 #!/usr/bin/python
 import subprocess
 import os
+import getpass
 from gi.repository import Gtk
 
 class AddDomain(object):
 
     # mdi = False
     windowAdd = False
+    progressValue = 0.0
 
     def getAddDomain(this):
         mdi = Gtk.Builder()
@@ -46,49 +48,38 @@ class AddHandler(AddDomain):
         self.addDomain_complete(uParam)
 
     def addDomain_createDomain(self):
-        self.window.log.set_text("Creation des dossiers")
-        subprocess.call(["mkdir", "-p", "/var/www/" + self.domainNameText + "/public_html"])
-        self.window.progress.set_fraction(0.1)
-        subprocess.call(["mkdir", "-p", "/var/www/" + self.domainNameText + "/logs"])
-        self.window.progress.set_fraction(0.2)
-
+        self.step(["mkdir", "-p", "/var/www/" + self.domainNameText + "/public_html"], True, "Creation des dossiers")
+        self.step(["mkdir", "-p", "/var/www/" + self.domainNameText + "/logs"], False, "")
         self.window.log.set_text("Ajout de la page d'exemple")
         self.addDomain_createDomain_file("file", "/var/www/" + self.domainNameText + "/public_html/index.html", "<html><head><title>Welcome to " + self.domainNameText + "!</title></head><body><h1>Success!  The " + self.domainNameText + " virtual host is working!</h1></body></html>")
-        self.window.progress.set_fraction(0.3)
-
+        self.progressValue = self.progressValue + 0.1
+        self.window.progress.set_fraction(self.progressValue)
         self.window.log.set_text("Configuration de l'hote virtuel")
         self.addDomain_createDomain_file("file", os.path.dirname(__file__) + "/vhosts/" + self.domainNameText + ".conf", "<VirtualHost *:80>" + "\nServerName " + self.domainNameText + "\nServerAlias www." + self.domainNameText + "\nServerAdmin admin@" + self.domainNameText + "\nDocumentRoot /var/www/" + self.domainNameText + "/public_html/ \nErrorLog /var/www/" + self.domainNameText + "/logs/error.log \nCustomLog /var/www/" + self.domainNameText + "/logs/access.log combined \n</VirtualHost>")
-        self.window.progress.set_fraction(0.4)
-
-        subprocess.call(["cp", os.path.dirname(__file__) + "/vhosts/" + self.domainNameText + ".conf", "/etc/apache2/sites-available/" + self.domainNameText + ".conf"])
-        self.window.progress.set_fraction(0.5)
-
-        self.window.log.set_text("Activation de l'hote virtuel")
-        subprocess.call(["a2ensite", self.domainNameText + ".conf"])
-        self.window.progress.set_fraction(0.6)
-
-        self.window.log.set_text("Redemarrage du service apache")
-        subprocess.call(["service", "apache2", "restart"])
-        self.window.progress.set_fraction(0.7)
-
-        self.window.log.set_text("Ajout des permissions utilisateurs")
-        subprocess.call(["chown", "-R", "marc:marc", "/var/www/" + self.domainNameText + "/public_html"])
-        self.window.progress.set_fraction(0.8)
-        subprocess.call(["chmod", "-R", "755", "/var/www/"])
-        self.window.progress.set_fraction(0.9)
-
-        self.window.log.set_text("Ajout de la configuration au fichier hosts")
-        subprocess.call(["cp", "/etc/hosts", os.path.dirname(__file__) + "/backup/hosts"])
-        self.addDomain_createDomain_file("hosts", "/etc/hosts", "127.0.0.1 " + self.domainNameText)
-        self.window.progress.set_fraction(1.0)
-
+        self.progressValue = self.progressValue + 0.1
+        self.window.progress.set_fraction(self.progressValue)
+        self.step(["cp", os.path.dirname(__file__) + "/vhosts/" + self.domainNameText + ".conf", "/etc/apache2/sites-available/" + self.domainNameText + ".conf"], False, "")
+        self.step(["a2ensite", self.domainNameText + ".conf"], True, "Activation de l'hote virtuel")
+        self.step(["service", "apache2", "restart"], True, "Redemarrage du service apache")
+        self.step(["chown", "-R", getpass.getuser() + ":" + getpass.getuser(), "/var/www/" + self.domainNameText + "/public_html"], True, "Ajout des permissions utilisateurs")
+        self.step(["chmod", "-R", "755", "/var/www/"], False, "")
+        self.step(["cp", "/etc/hosts", os.path.dirname(__file__) + "/backup/hosts"], True, "Ajout de la configuration au fichier hosts")
+        self.addDomain_createDomain_file("hostsAndData", "/etc/hosts", "127.0.0.1 " + self.domainNameText)
+        self.addDomain_createDomain_file("hostsAndData", os.path.dirname(__file__) + "/data/domain.dnc", self.domainNameText)
         self.window.log.set_text("Nom de domaine pret a l'emploi")
 
     def addDomain_createDomain_file(self, forFile, path, data):
         data2 = ""
-        if forFile == "hosts":
+        if (forFile == "hostsAndData"):
             for line in open(path, "r").readlines():
                 data2 = data2 + line
         fo = open(path, "w")
         fo.write(data2 + data)
         fo.close()
+
+    def step(self, command, withText, text):
+        if (withText):
+            self.window.log.set_text(text)
+        subprocess.call(command)
+        self.progressValue = self.progressValue + 0.1
+        self.window.progress.set_fraction(self.progressValue)

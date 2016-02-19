@@ -28,13 +28,13 @@ Author: Daethe
   <!-- interface-copyright 2015 -->
   <!-- interface-authors Daethe -->
   <object class="GtkApplicationWindow" id="mainDomain">
-    <property name="width_request">250</property>
+    <property name="width_request">400</property>
     <property name="can_focus">False</property>
     <property name="border_width">10</property>
     <property name="title" translatable="yes">Main</property>
     <property name="resizable">False</property>
     <property name="window_position">center</property>
-    <property name="default_width">250</property>
+    <property name="default_width">400</property>
     <property name="default_height">100</property>
     <property name="deletable">False</property>
     <property name="show_menubar">False</property>
@@ -50,16 +50,18 @@ Author: Daethe
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
-              <object class="GtkLabel" id="label7">
+              <object class="GtkLabel" id="mainDomain_desc1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Pour créer un nouveau nom de domaine, veuillez suivre les informations données lors de la création de celui-ci. Durant le processus de création un dossier sera créée pour ce nom de domaine.</property>
                 <property name="wrap">True</property>
+                <property name="wrap_mode">word-char</property>
                 <property name="ellipsize">start</property>
                 <property name="width_chars">30</property>
                 <property name="max_width_chars">30</property>
-                <property name="lines">4</property>
+                <property name="lines">5</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -68,18 +70,18 @@ Author: Daethe
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label8">
+              <object class="GtkLabel" id="mainDomain_desc2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">
-
-Lors de l'étape de suppression le dossier qui fut créer sera supprimer, de ce fait veuillez prendre soin de sauvegarder tout fichiers créée au sein de celui-ci.
-</property>
+                <property name="ypad">15</property>
+                <property name="label" translatable="yes">Lors de l'étape de suppression le dossier qui fut créer sera supprimer, de ce fait veuillez prendre soin de sauvegarder tout fichiers créée au sein de celui-ci.</property>
                 <property name="wrap">True</property>
+                <property name="wrap_mode">word-char</property>
                 <property name="ellipsize">start</property>
                 <property name="width_chars">30</property>
                 <property name="max_width_chars">30</property>
-                <property name="lines">4</property>
+                <property name="lines">5</property>
+                <property name="xalign">0.25</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -146,6 +148,20 @@ Lors de l'étape de suppression le dossier qui fut créer sera supprimer, de ce 
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="preference">
+            <property name="label" translatable="yes">Preférences</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="prefDomain_opening" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>

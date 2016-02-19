@@ -1,0 +1,27 @@
+{
+    "langMain": {
+        "desc1":      "To create a new domain name, please follow the information given during the creation of it. During the creation process a folder will be created for this domain name.",
+        "desc2":      "When the step of deleting the folder that was created will be deleted, therefore please take care to save any files created within it.",
+        "newDomain":  "Add new domain",
+        "delDomain":  "Delete domain",
+        "prefDomain": "Settings"
+    },
+    "langAdd": {
+        "title":      "Add new domain",
+        "introDesc1": "During the process please have LAMP Server started. This one will be restarted during the process to ensure the start of your faster development.",
+        "introDesc2": "During configuration please do not touch the folder that will be created to ensure the functioning of the program. Also please do not touch the conf file to be created.",
+        "domainName": "Domain name",
+        "informDesc": "To add a new domain, you specify the field above and ensure that the domain does not yet exist on your LAMP server.",
+        "complDesc1": "The domain has been added to your LAMP server. It is also part of the hosts file on your system. The addition of this workforce is made.",
+        "complDesc2": "Your development server was also rebooted to ensure faster development."
+    },
+    "langDel": {
+        "title":      "Delete domain"
+    },
+    "langPref": {
+        "hostLbl":    "Mysql host",
+        "portLbl":    "Mysql port",
+        "passLnl":    "Password Mysql",
+        "mysqlDesc" : "The information presented here are used to create a database when creating a virtual host."
+    }
+}

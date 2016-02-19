@@ -19,9 +19,12 @@
         "title":      "Delete domain"
     },
     "langPref": {
-        "hostLbl":    "Mysql host",
-        "portLbl":    "Mysql port",
-        "passLnl":    "Password Mysql",
-        "mysqlDesc" : "The information presented here are used to create a database when creating a virtual host."
+        "langTitle":  "Language",
+        "dbTitle":    "Database",
+        "hostLbl":    "Host",
+        "portLbl":    "Port",
+        "userLbl":    "User",
+        "passLbl":    "Password",
+        "dbDesc" :    "The information presented here are used to create a database when creating a virtual host."
     }
 }

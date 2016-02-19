@@ -1,1 +1,1 @@
-{"lang": "en_EN", "host": "", "port": "", "pass": ""}
+{"lang": "en_EN", "dbTy": "Mysql", "host": "", "user": "", "pass": "", "port": ""}

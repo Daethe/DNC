@@ -19,9 +19,12 @@
         "title":      "Supprimer un domaine"
     },
     "langPref": {
-        "hostLbl":    "Hôte Mysql",
-        "portLbl":    "Port Mysql",
-        "passLnl":    "Mot de passe Mysql",
-        "mysqlDesc" : "Les informations présentent ici servent à créer une base de données lors de la création d'un hôte virtuel."
+        "langTitle":  "Langage",
+        "dbTitle":    "Base de données",
+        "hostLbl":    "Hôte",
+        "portLbl":    "Port",
+        "userLbl":    "Utilisateur",
+        "passLbl":    "Mot de passe",
+        "dbDesc" :    "Les informations présentent ici servent à créer une base de données lors de la création d'un hôte virtuel."
     }
 }

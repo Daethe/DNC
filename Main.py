@@ -7,25 +7,17 @@ from LangLoader import LangLoader
 
 class MainDomain:
 
+    componentName = ["desc1", "desc2", "newDomain", "delDomain", "prefDomain"]
+    component = []
+
     def __init__(self):
-        mdi = Gtk.Builder()
-        mdi.add_from_file('interface/mainDomain.glade')
-        mdi.connect_signals(MainHandler())
+        self.mdi = Gtk.Builder()
+        self.mdi.add_from_file('interface/mainDomain.glade')
+        self.mdi.connect_signals(MainHandler())
 
-        window = mdi.get_object("mainDomain")
+        window = self.mdi.get_object("mainDomain")
 
-        window.desc1     = mdi.get_object("mainDomain_desc1")
-        window.desc2     = mdi.get_object("mainDomain_desc2")
-        window.addDomain = mdi.get_object("newDomain")
-        window.delDomain = mdi.get_object("delDomain")
-        window.pref      = mdi.get_object("preference")
-
-        window.desc1.set_label(LangLoader().loadLang("langMain", "desc1"))
-        window.desc2.set_label(LangLoader().loadLang("langMain", "desc2"))
-        window.addDomain.set_label(LangLoader().loadLang("langMain", "newDomain"))
-        window.delDomain.set_label(LangLoader().loadLang("langMain", "delDomain"))
-        window.pref.set_label(LangLoader().loadLang("langMain", "prefDomain"))
-
+        self.component = LangLoader().initVarForLang("langMain", self.mdi, self.componentName)
         window.show_all()
 
 class MainHandler:

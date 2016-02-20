@@ -8,15 +8,18 @@
     },
     "langAdd": {
         "title":      "Add new domain",
-        "introDesc1": "During the process please have LAMP Server started. This one will be restarted during the process to ensure the start of your faster development.",
-        "introDesc2": "During configuration please do not touch the folder that will be created to ensure the functioning of the program. Also please do not touch the conf file to be created.",
-        "domainName": "Domain name",
-        "informDesc": "To add a new domain, you specify the field above and ensure that the domain does not yet exist on your LAMP server.",
-        "complDesc1": "The domain has been added to your LAMP server. It is also part of the hosts file on your system. The addition of this workforce is made.",
-        "complDesc2": "Your development server was also rebooted to ensure faster development."
+        "iDesc1":     "During the process please have LAMP Server started. This one will be restarted during the process to ensure the start of your faster development.",
+        "iDesc2":     "During configuration please do not touch the folder that will be created to ensure the functioning of the program. Also please do not touch the conf file to be created.",
+        "domainLbl":  "Domain name",
+        "iDesc3":     "To add a new domain, you specify the field above and ensure that the domain does not yet exist on your LAMP server.",
+        "cDesc1":     "The domain has been added to your LAMP server. It is also part of the hosts file on your system. The addition of this workforce is made.",
+        "cDesc2":     "Your development server was also rebooted to ensure faster development."
     },
     "langDel": {
-        "title":      "Delete domain"
+        "title":      "Delete domain",
+        "iDesc1":     "To delete a domain, please specify the field above and make sure that the domain still exists on your LAMP server.",
+        "iDesc2":     "The domain name has been deleted from your server LAMP. This is also part of the hosts file on your system. The removal of this actual fact. Your development server has also been rebooted to ensure faster development.",
+        "domainLbl":  "Domain name"
     },
     "langPref": {
         "langTitle":  "Language",
@@ -25,6 +28,8 @@
         "portLbl":    "Port",
         "userLbl":    "User",
         "passLbl":    "Password",
-        "dbDesc" :    "The information presented here are used to create a database when creating a virtual host."
+        "dbDesc" :    "The information presented here are used to create a database when creating a virtual host.",
+        "cancel" :    "Cancel",
+        "save" :      "Save"
     }
 }

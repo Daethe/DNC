@@ -52,7 +52,7 @@ Author: Daethe
             <property name="orientation">vertical</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkLabel" id="mainDomain_desc1">
+              <object class="GtkLabel" id="desc1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Pour créer un nouveau nom de domaine, veuillez suivre les informations données lors de la création de celui-ci. Durant le processus de création un dossier sera créée pour ce nom de domaine.</property>
@@ -70,7 +70,7 @@ Author: Daethe
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="mainDomain_desc2">
+              <object class="GtkLabel" id="desc2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="ypad">15</property>
@@ -151,7 +151,7 @@ Author: Daethe
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="preference">
+          <object class="GtkButton" id="prefDomain">
             <property name="label" translatable="yes">Preférences</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

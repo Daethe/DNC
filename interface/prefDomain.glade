@@ -20,8 +20,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <signal name="clicked" handler="prefDomain_destroy" swapped="no"/>
-                <signal name="destroy" handler="prefDomain_destroy" swapped="no"/>
+                <signal name="clicked" handler="destroy" swapped="no"/>
+                <signal name="destroy" handler="destroy" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -35,7 +35,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <signal name="clicked" handler="prefDomain_save" swapped="no"/>
+                <signal name="clicked" handler="save" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -56,7 +56,7 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="prefDomain_langTitle">
+              <object class="GtkLabel" id="langTitle">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Langage</property>
@@ -84,7 +84,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBox" id="lang_combobox">
+              <object class="GtkComboBox" id="langSe">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="active">0</property>
@@ -121,10 +121,10 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="prefDomain_mysqlTitle">
+              <object class="GtkLabel" id="dbTitle">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">MySQL</property>
+                <property name="label" translatable="yes">Base de données</property>
                 <attributes>
                   <attribute name="scale" value="2"/>
                 </attributes>
@@ -151,38 +151,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="prefDomain_mysqlBox">
+              <object class="GtkBox" id="prefDomain_dbBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkBox" id="prefDomain_hostBox">
+                  <object class="GtkComboBox" id="dbType">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
-                    <child>
-                      <object class="GtkLabel" id="prefDomain_hostLbl">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Hôte MySQL</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="prefDomain_hostMysql">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
+                    <property name="tearoff_title" translatable="yes">MySQL
+PostgreSQL</property>
+                    <property name="active_id">1</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -191,33 +170,11 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="prefDomain_portBox">
+                  <object class="GtkSeparator" id="separator4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
-                    <child>
-                      <object class="GtkLabel" id="prefDomain_portLbl">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Port MySQL</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="prefDomain_portMysql">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -226,15 +183,15 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="prefDomain_passBox">
+                  <object class="GtkBox" id="prefDomain_hostBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="homogeneous">True</property>
                     <child>
-                      <object class="GtkLabel" id="prefDomain_passLbl">
+                      <object class="GtkLabel" id="hostLbl">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Mot de passe MySQL</property>
+                        <property name="label" translatable="yes">Hôte</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -243,7 +200,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="prefDomain_passMysql">
+                      <object class="GtkEntry" id="hostDb">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
@@ -261,7 +218,112 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="prefDomain_mysqlDesc">
+                  <object class="GtkBox" id="prefDomain_portBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel" id="portLbl">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Port</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="portDb">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="prefDomain_userBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel" id="userLbl">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Utilisateur</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="userDb">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="prefDomain_passBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel" id="passLbl">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Mot de passe</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="passDb">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="dbDesc">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_top">10</property>
@@ -271,12 +333,12 @@
                     <property name="width_chars">50</property>
                     <property name="max_width_chars">50</property>
                     <property name="lines">5</property>
-                    <signal name="destroy" handler="prefDomain_destroy" swapped="no"/>
+                    <signal name="destroy" handler="destroy" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">3</property>
+                    <property name="position">6</property>
                   </packing>
                 </child>
               </object>

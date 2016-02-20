@@ -7,10 +7,10 @@
     <property name="resizable">False</property>
     <property name="window_position">center</property>
     <property name="use_header_bar">0</property>
-    <signal name="cancel" handler="addDomain_destroy" swapped="no"/>
-    <signal name="close" handler="addDomain_destroy" swapped="no"/>
-    <signal name="delete-event" handler="addDomain_destroy" swapped="no"/>
-    <signal name="prepare" handler="addDomain_prepare" swapped="no"/>
+    <signal name="cancel" handler="destroy" swapped="no"/>
+    <signal name="close" handler="destroy" swapped="no"/>
+    <signal name="delete-event" handler="destroy" swapped="no"/>
+    <signal name="prepare" handler="prepare" swapped="no"/>
     <child>
       <object class="GtkBox" id="introDomain">
         <property name="visible">True</property>
@@ -18,7 +18,7 @@
         <property name="orientation">vertical</property>
         <property name="homogeneous">True</property>
         <child>
-          <object class="GtkLabel" id="addDomain_introDomain_title">
+          <object class="GtkLabel" id="title1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Ajouter un nouveau domaine</property>
@@ -33,7 +33,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="addDomain_introDomain_desc1">
+          <object class="GtkLabel" id="iDesc1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Pendant le processus veillez à garder votre serveur LAMP allumé. Celui-ci sera automatique redémarré à un certain moment de l'opération pour garantir le début de votre développement plus rapide.</property>
@@ -49,7 +49,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="addDomain_introDomain_desc2">
+          <object class="GtkLabel" id="iDesc2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Durant la configuration veuillez ne pas toucher au dossier qui sera créer pour garantir le fonctionnement du programme. De même veuillez ne pas toucher au fichier conf qui sera créer.</property>
@@ -78,7 +78,7 @@
         <property name="spacing">20</property>
         <property name="homogeneous">True</property>
         <child>
-          <object class="GtkLabel" id="addDomain_informationDomain_title">
+          <object class="GtkLabel" id="title2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Ajouter un nouveau domaine</property>
@@ -98,7 +98,7 @@
             <property name="can_focus">False</property>
             <property name="spacing">10</property>
             <child>
-              <object class="GtkLabel" id="addDomain_informationDomain_domainNameLabel">
+              <object class="GtkLabel" id="domainLbl">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Nom de domaine</property>
@@ -110,14 +110,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="addDomain_informationDomain_domainName">
+              <object class="GtkEntry" id="informationDomain_domainName">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="has_focus">True</property>
                 <property name="max_length">50</property>
                 <property name="width_chars">50</property>
                 <property name="max_width_chars">50</property>
-                <signal name="changed" handler="addDomain_domainName_changed" swapped="no"/>
+                <signal name="changed" handler="domainName_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -133,7 +133,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="addDomain_informationDomain_desc">
+          <object class="GtkLabel" id="iDesc3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Pour ajouter un nouveau domaine, veuillez spécifier le champ ci dessus et vous assurez que ce nom de domaine n'existe pas encore sur votre serveur LAMP.</property>
@@ -157,7 +157,7 @@
         <property name="orientation">vertical</property>
         <property name="homogeneous">True</property>
         <child>
-          <object class="GtkLabel" id="addDomain_progressDomain_title">
+          <object class="GtkLabel" id="title3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="ypad">6</property>
@@ -173,7 +173,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkProgressBar" id="addDomain_progressDomain_progress">
+          <object class="GtkProgressBar" id="progressDomain_progress">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="pulse_step">0.10000000022351742</property>
@@ -185,7 +185,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="addDomain_progressDomain_log">
+          <object class="GtkLabel" id="log">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">label</property>
@@ -208,7 +208,7 @@
         <property name="orientation">vertical</property>
         <property name="homogeneous">True</property>
         <child>
-          <object class="GtkLabel" id="addDomain_completeDomain_title">
+          <object class="GtkLabel" id="title4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="ypad">6</property>
@@ -224,7 +224,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="addDomain_completeDomain_desc1">
+          <object class="GtkLabel" id="cDesc1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Le nom de domaine a bien été ajouté à votre server LAMP. Celui-ci fait aussi parti du fichier hosts de votre système. L'ajout est de ce fait effectif.</property>
@@ -240,7 +240,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="addDomain_completeDomain_desc2">
+          <object class="GtkLabel" id="cDesc2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Votre serveur de développement a également été redemarré pour garantir un développement plus rapide.</property>

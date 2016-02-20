@@ -9,34 +9,23 @@ class PrefDomain(object):
 
     windowPref = False
 
+    componentName = ["langTitle", "dbTitle", "hostLbl", "portLbl", "userLbl", "passLbl", "dbDesc", "cancel", "save"]
+    component = []
+
     def getPrefDomain(this):
         mdi = Gtk.Builder()
         mdi.add_from_file('interface/prefDomain.glade')
 
         this.windowPref = mdi.get_object("prefDomain")
-        this.windowPref.comboLang  = mdi.get_object("prefDomain_langSe")
-        this.windowPref.comboDb    = mdi.get_object("prefDomain_dbType")
+        this.windowPref.comboLang  = mdi.get_object("langSe")
+        this.windowPref.comboDb    = mdi.get_object("dbType")
 
-        this.windowPref.langT  = mdi.get_object("prefDomain_langTitle")
-        this.windowPref.dbT    = mdi.get_object("prefDomain_dbTitle")
-        this.windowPref.hostLb = mdi.get_object("prefDomain_hostLbl")
-        this.windowPref.portLb = mdi.get_object("prefDomain_portLbl")
-        this.windowPref.userLb = mdi.get_object("prefDomain_userLbl")
-        this.windowPref.passLb = mdi.get_object("prefDomain_passLbl")
-        this.windowPref.desc   = mdi.get_object("prefDomain_dbDesc")
+        this.windowPref.host   = mdi.get_object("hostDb")
+        this.windowPref.port   = mdi.get_object("portDb")
+        this.windowPref.userw  = mdi.get_object("userDb")
+        this.windowPref.passw  = mdi.get_object("passDb")
 
-        this.windowPref.host   = mdi.get_object("prefDomain_hostDb")
-        this.windowPref.port   = mdi.get_object("prefDomain_portDb")
-        this.windowPref.userw  = mdi.get_object("prefDomain_userDb")
-        this.windowPref.passw  = mdi.get_object("prefDomain_passDb")
-
-        this.windowPref.langT .set_label(LangLoader().loadLang("langPref", "langTitle"))
-        this.windowPref.dbT   .set_label(LangLoader().loadLang("langPref", "dbTitle"))
-        this.windowPref.hostLb.set_label(LangLoader().loadLang("langPref", "hostLbl"))
-        this.windowPref.portLb.set_label(LangLoader().loadLang("langPref", "portLbl"))
-        this.windowPref.userLb.set_label(LangLoader().loadLang("langPref", "userLbl"))
-        this.windowPref.passLb.set_label(LangLoader().loadLang("langPref", "passLbl"))
-        this.windowPref.desc  .set_label(LangLoader().loadLang("langPref", "dbDesc"))
+        this.component = LangLoader().initVarForLang("langPref", mdi, this.componentName)
 
         this.windowPref.show_all()
 
@@ -52,7 +41,7 @@ class PrefHandler(PrefDomain):
 
         self.comboLang  = window.comboLang
         self.comboLangData = Gtk.ListStore(str)
-        self.prefDomain_defineComboData(1)
+        self.defineComboData(1)
         self.comboLang.set_model(self.comboLangData)
         self.cell = Gtk.CellRendererText()
         self.comboLang.pack_start(self.cell, True)
@@ -60,30 +49,30 @@ class PrefHandler(PrefDomain):
 
         self.comboDb  = window.comboDb
         self.comboDbData = Gtk.ListStore(str)
-        self.prefDomain_defineComboData(2)
+        self.defineComboData(2)
         self.comboDb.set_model(self.comboDbData)
         self.cell = Gtk.CellRendererText()
         self.comboDb.pack_start(self.cell, True)
         self.comboDb.add_attribute(self.cell, 'text', 0)
 
-        self.prefDomain_setTextbox()
-        self.prefDomain_setComboBox(self.lang, self.db)
+        self.setTextbox()
+        self.setComboBox(self.lang, self.db)
 
-    def prefDomain_destroy(self, *args):
+    def destroy(self, *args):
         self.window.destroy()
 
-    def prefDomain_save(self, *args):
-        self.prefDomain_save_file(
-            self.prefDomain_getItem(self.window.comboLang)[0],
-            self.prefDomain_getItem(self.window.comboDb)[0],
+    def save(self, *args):
+        self.save_file(
+            self.getItem(self.window.comboLang)[0],
+            self.getItem(self.window.comboDb)[0],
             self.window.host.get_text(),
             self.window.port.get_text(),
             self.window.userw.get_text(),
             self.window.passw.get_text()
         )
-        self.prefDomain_destroy()
+        self.destroy()
 
-    def prefDomain_save_file(self, lang, db, host, port, user, password):
+    def save_file(self, lang, db, host, port, user, password):
         jsonFile = open("data/pref.dnc", "r")
         data = json.load(jsonFile)
         jsonFile.close()
@@ -99,7 +88,7 @@ class PrefHandler(PrefDomain):
         jsonFile.write(json.dumps(data))
         jsonFile.close()
 
-    def prefDomain_loadData(self, path):
+    def loadData(self, path):
         data = ""
         fo = open(path, "r")
         lines = fo.readlines()
@@ -112,15 +101,15 @@ class PrefHandler(PrefDomain):
             i = i + 1
         return data.replace('\n', '').split(":")
 
-    def prefDomain_defineComboData(self, i):
+    def defineComboData(self, i):
         if i == 1:
-            for data in self.prefDomain_loadData(os.path.dirname(__file__) + '/data/lang.dnc'):
+            for data in self.loadData(os.path.dirname(__file__) + '/data/lang.dnc'):
                 self.comboLangData.append([data])
         elif i == 2:
             self.comboDbData.append(["Mysql"])
             self.comboDbData.append(["PostgreSQL"])
 
-    def prefDomain_setTextbox(self):
+    def setTextbox(self):
         jsonFile = open("data/pref.dnc", "r")
         data = json.load(jsonFile)
         jsonFile.close()
@@ -133,16 +122,16 @@ class PrefHandler(PrefDomain):
         self.window.userw.set_text(data["user"])
         self.window.passw.set_text(data["pass"])
 
-    def prefDomain_setComboBox(self, lang, db):
-        self.window.comboLang.set_active(self.prefDomain_getActiveItem(self.window.comboLang, self.lang))
-        self.window.comboDb.set_active(self.prefDomain_getActiveItem(self.window.comboDb, self.db))
+    def setComboBox(self, lang, db):
+        self.window.comboLang.set_active(self.getActiveItem(self.window.comboLang, self.lang))
+        self.window.comboDb.set_active(self.getActiveItem(self.window.comboDb, self.db))
 
-    def prefDomain_getItem(self, combo):
+    def getItem(self, combo):
         index = combo.get_active()
         model = combo.get_model()
         return model[index]
 
-    def prefDomain_getActiveItem(self, combo, data):
+    def getActiveItem(self, combo, data):
         i = 0
         m = combo.get_model()
         while m[i][0] != data :

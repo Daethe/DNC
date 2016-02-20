@@ -5,9 +5,9 @@
   <object class="GtkAssistant" id="delDomain">
     <property name="can_focus">False</property>
     <property name="use_header_bar">0</property>
-    <signal name="cancel" handler="delDomain_destroy" swapped="no"/>
-    <signal name="close" handler="delDomain_destroy" swapped="no"/>
-    <signal name="delete-event" handler="delDomain_destroy" swapped="no"/>
+    <signal name="cancel" handler="destroy" swapped="no"/>
+    <signal name="close" handler="destroy" swapped="no"/>
+    <signal name="delete-event" handler="destroy" swapped="no"/>
     <child>
       <object class="GtkBox" id="informationDomain">
         <property name="visible">True</property>
@@ -16,7 +16,7 @@
         <property name="spacing">20</property>
         <property name="homogeneous">True</property>
         <child>
-          <object class="GtkLabel" id="delDomain_informationDomain_title">
+          <object class="GtkLabel" id="title1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Supprimer un domaine</property>
@@ -36,7 +36,7 @@
             <property name="can_focus">False</property>
             <property name="spacing">10</property>
             <child>
-              <object class="GtkLabel" id="delDomain_informationDomain_domainNameLabel">
+              <object class="GtkLabel" id="domainLbl">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Nom de domaine</property>
@@ -48,7 +48,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBox" id="delDomain_informationDomain_domainName">
+              <object class="GtkComboBox" id="informationDomain_domainName">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_top">10</property>
@@ -68,7 +68,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="delDomain_informationDomain_desc">
+          <object class="GtkLabel" id="iDesc1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Pour supprimer un domaine, veuillez spécifier le champ ci dessus et vous assurez que ce nom de domaine existe encore sur votre serveur LAMP.</property>
@@ -92,7 +92,7 @@
         <property name="orientation">vertical</property>
         <property name="homogeneous">True</property>
         <child>
-          <object class="GtkLabel" id="delDomain_progressDomain_title">
+          <object class="GtkLabel" id="title2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="ypad">6</property>
@@ -108,7 +108,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkProgressBar" id="delDomain_progressDomain_progress">
+          <object class="GtkProgressBar" id="progressDomain_progress">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="pulse_step">0.10000000022351742</property>
@@ -120,7 +120,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="delDomain_progressDomain_log">
+          <object class="GtkLabel" id="log">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">label</property>
@@ -139,7 +139,7 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="delDomain_completeDomain_title">
+          <object class="GtkLabel" id="title3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="ypad">6</property>
@@ -155,7 +155,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="delDomain_completeDomain_desc">
+          <object class="GtkLabel" id="iDesc2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Le nom de domaine a bien été supprimé de votre server LAMP. Celui-ci fait aussi parti du fichier hosts de votre système. L'ajout est de ce fait effectif.

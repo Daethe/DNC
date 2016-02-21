@@ -19,7 +19,7 @@ class AddDomain(object):
 
         this.windowAdd = mdi.get_object("addDomain")
         this.windowAdd.domainName = mdi.get_object("informationDomain_domainName")
-        this.windowAdd.log = mdi.get_object("progressDomain_log")
+        this.windowAdd.log = mdi.get_object("log")
         this.windowAdd.progress = mdi.get_object("progressDomain_progress")
 
         this.component = LangLoader().initVarForLang("langAdd", mdi, this.componentName)
@@ -79,12 +79,12 @@ class AddHandler(AddDomain):
             for line in open(path, "r").readlines():
                 data2 = data2 + line
         fo = open(path, "w")
-        fo.write(data2 + data)
+        fo.write(data2 + "\n" + data)
         fo.close()
 
     def step(self, command, withText, text):
         if (withText):
             self.window.log.set_text(text)
-        subprocess.call(command)
+        subprocess.Popen(command)
         self.progressValue = self.progressValue + 0.1
         self.window.progress.set_fraction(self.progressValue)

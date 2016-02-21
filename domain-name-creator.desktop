@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.5
+Name=DomainNameCreator
+Comment=Application for creating new domain for apache
+Exec=gksudo /home/marc/Bureau/AppCustom/Domain/Main.py
+Icon=/home/marc/Bureau/AppCustom/Domain/icon.ico
+Path=/home/marc/Bureau/AppCustom/Domain
+Terminal=false
+Type=Application
+Categories=Utility;Application;
